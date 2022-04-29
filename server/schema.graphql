@@ -1,0 +1,21 @@
+type Query {
+    info: String!
+    feed: [Book!]!
+}
+
+type Mutation {
+    post(url: String!, description: String!): Book!
+}
+
+type Book {
+    id: ID!
+    title: String!
+    author: User
+}
+
+type User {
+    id: ID!
+    username: String!
+    email: String!
+    books: [Book!]!
+}

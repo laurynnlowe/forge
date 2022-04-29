@@ -1,0 +1,40 @@
+{
+  "name": "forge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.$NODE_ENV.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "prisma db push && node prisma/seed/index.js",
+    "start": "node server",
+    "start-dev": "webpack -w & nodemon server"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@prisma/client": "^3.13.0",
+    "apollo-server": "^3.6.7",
+    "apollo-server-cache-redis": "^3.3.1",
+    "graphql": "^16.4.0",
+    "ioredis": "^5.0.4",
+    "nodemon": "^2.0.15",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "prisma": "^3.13.0",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-merge": "^5.8.0",
+    "webpack-node-externals": "^3.0.0"
+  }
+}
