@@ -89,7 +89,7 @@ var BuildBooks = function BuildBooks() {
       className: "pageImage",
       src: ground.image
     }));
-  }))), "}"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "buildpage"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "charactersCol"

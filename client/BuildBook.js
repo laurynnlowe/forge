@@ -56,7 +56,7 @@ const BuildBooks = () => {
                         </div>
                     ))}
                     </div>
-                </div>}
+                </div>
             </div>  
             <div className="buildpage">
                 <div className='charactersCol'>

@@ -1,6 +1,9 @@
 {
   "name": "forge",
   "version": "1.0.0",
+  "engined": {
+    "node": "16.x"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
