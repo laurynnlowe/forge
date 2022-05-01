@@ -15,7 +15,7 @@
 // // Required for babel-preset-react-app
 // process.env.NODE_ENV = 'development';
 const CopyPlugin = require("copy-webpack-plugin");
-const htmlPlugin = require("html-webpack-plugin");
+// const htmlPlugin = require("html-webpack-plugin");
 
 module.exports = {
     entry: [
@@ -34,9 +34,9 @@ module.exports = {
     },
     mode: 'development',
     plugins: [
-      new htmlPlugin({
-        template: 'public/index.html',
-      }),
+      // new htmlPlugin({
+      //   template: 'public/index.html',
+      // }),
       new CopyPlugin({
         patterns:[
           {from: './public/favicon.ico' },
