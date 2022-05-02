@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useLayoutEffect, useRef} from 'react';
 import Draggable, {DraggableCore} from 'react-draggable'
 import Draw from './Draw'
+import CanvasDraw from "react-canvas-draw";
 
 const characters = [
     {   id: 11,
@@ -31,7 +32,10 @@ const pageBackgrounds = [
 
 
 const BuildBooks = () => {
+    const [title, setTitle] =useState('My Great Story');
+    const [numberOfPages, setNumberOfPages] = useState(1)
     const [background, setBackground] = useState('');
+    const [clicked, setClicked] = useState(false)
     const [positions, setPositions] = useState({x:0, y:0})
 
     const trackPos = (data) => {
@@ -53,17 +57,37 @@ const BuildBooks = () => {
         <div>
             <div className="title">
                 <h1 >Build A Book</h1>
+                <h3>Title: {title}</h3>
+                {/* <h3>Page Number: 1</h3>
+                <h3>Number of pages: {numberOfPages}</h3> */}
             </div>
             <div>
                 <div>
-                    <p className="select">Select background:</p>
-                    <div className="backgroundContainer">
-                    {pageBackgrounds.map((ground, index)=>(
-                        <div key={index} onClick={()=>setBackground(ground.image)}>
-                            <img className="pageImage" src={ground.image} />
-                        </div>
-                    ))}
+                    <form>
+                        <div className='formElements'>
+                            {/* <label htmlFor="title">Title:</label>
+                            <input name="title" onChange={()=>setTitle(title)} value={title} /> */}
+
+                            {/* <label htmlFor="pages">Number of Pages:</label>
+                            <input name="title" onChange={()=>setNumberOfPages(numberOfPages)} value={numberOfPages} /> */}
+                            {/* <button type='submit'>Save</button> */}
                     </div>
+                    </form>
+
+                </div>
+            <div className='titleContainer'>
+                <p className="select">Select background:</p>
+                <div className='titlePlaceholder'></div>
+            </div>
+                <div className='backgroundContainer '>
+                    <div className='backgroundElements'>
+                        {pageBackgrounds.map((ground, index)=>(
+                            <div key={index} onClick={()=>setBackground(ground.image)}>
+                                <img className="pageImage" src={ground.image} />
+                            </div>
+                        ))}
+                    </div>
+                    <div className='backgroundPlaceHolder'></div>
                 </div>
             </div>  
             <div className="buildpage">
@@ -83,11 +107,20 @@ const BuildBooks = () => {
                         ))}
                     </div>
                 </div>
+                {/* <CanvasDraw hideGrid={true} gridColor={"bisque"} > */}
                 <div style={{ backgroundImage: `url(${background})`}} className="page">
                     <canvas id="canvas" width={window.innerWidth} height={window.innerHeight}></canvas>
                 </div>
+                {/* </CanvasDraw> */}
             </div>
-            <button>Save Page</button>
+            <div className='buttonContainer'>
+                <div className="buttons">
+                    <button className="singleButton">Save Page</button>
+                    <button className="singleButton">See All Pages</button>
+                    <button className="singleButton">Add Page</button>
+                </div>
+                <div className='buttonPlaceHolder'></div>
+            </div>
         </div>)
 }
 
