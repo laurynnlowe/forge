@@ -15,6 +15,8 @@ const prisma = new PrismaClient();
 // import config from './config.js'; no longer necessary?
 // import typeDefs from './schema.js'; no, going to use schema.graphql instead
 const resolvers = require('./resolvers/resolvers.js');
+const bodyParser = require ('body-parser');
+
 
 async function startApolloServer(typeDefs, resolvers){
 
@@ -76,3 +78,7 @@ app.use('*', (req, res) => {
 }
 
 startApolloServer()
+
+//restructuring express and apollo servers
+const app = express();
+app.use(bodyParser.json)

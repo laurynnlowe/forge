@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useLayoutEffect, useRef} from 'react';
 import Draggable, {DraggableCore} from 'react-draggable'
+import Draw from './Draw'
 
 const characters = [
     {   id: 11,
@@ -67,7 +68,7 @@ const BuildBooks = () => {
             </div>  
             <div className="buildpage">
                 <div className='charactersCol'>
-                    <p>Select character:</p>
+                    <p>Select characters:</p>
                     <div>
                         {characters.map((character, index)=>(
                             <>
