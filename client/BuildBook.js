@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useLayoutEffect} from 'react';
+import React, {useState, useEffect, useLayoutEffect, useRef} from 'react';
 import Draggable, {DraggableCore} from 'react-draggable'
 
 const characters = [
@@ -31,17 +31,24 @@ const pageBackgrounds = [
 
 const BuildBooks = () => {
     const [background, setBackground] = useState('');
-    const [toggle, setToggle] = useState(false)
+    const [positions, setPositions] = useState({x:0, y:0})
+
+    const trackPos = (data) => {
+        setPositions({x: data.x, y: data.y})
+    }
+
+    useEffect(() => {
+      }, []);
+
 
     // useLayoutEffect( () =>{
     //     const canvas = document.getElementById('canvas');
     //     const ctx = canvas.getContext('2d');
-    //     ctx.fillStyle = 'green';
-    //     ctx.fillRect(10, 10, 100, 100);
+
     // })
 
 
-    return (
+    return  (
         <div>
             <div className="title">
                 <h1 >Build A Book</h1>
@@ -50,25 +57,27 @@ const BuildBooks = () => {
                 <div>
                     <p className="select">Select background:</p>
                     <div className="backgroundContainer">
-                    {pageBackgrounds.map((ground)=>(
-                        <div key={ground.id} onClick={()=>setBackground(ground.image)}>
+                    {pageBackgrounds.map((ground, index)=>(
+                        <div key={index} onClick={()=>setBackground(ground.image)}>
                             <img className="pageImage" src={ground.image} />
                         </div>
                     ))}
                     </div>
-                </div>}
+                </div>
             </div>  
             <div className="buildpage">
                 <div className='charactersCol'>
-                    <p>Select characters:</p>
+                    <p>Select character:</p>
                     <div>
-                        {characters.map((character)=>(
+                        {characters.map((character, index)=>(
                             <>
-                            <Draggable>
-                                <div key={character.id}>
-                                    <img className='character' src={character.image } />
+                            <Draggable
+                                onDrag={(e, data) => trackPos(data)}
+                                    >
+                                <div key={index}>
+                                    <img src={character.image} className="character"/>
                                 </div>
-                            </Draggable>
+                           </Draggable>
                             </>
                         ))}
                     </div>
@@ -77,9 +86,8 @@ const BuildBooks = () => {
                     <canvas id="canvas" width={window.innerWidth} height={window.innerHeight}></canvas>
                 </div>
             </div>
-        </div>
-
-    )
+            <button>Save Page</button>
+        </div>)
 }
 
 export default BuildBooks

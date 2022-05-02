@@ -1,19 +1,18 @@
 import React from 'react';
-// import {useRoutes} from 'hookrouter';
 import ReactDOM from 'react-dom'
 import '../public/style.css'
-import routes from './routes'
+import {Link} from "react-router-dom";
 
 
 const Home = () => {
-    // const routing = useRoutes(routes)
+
     return (
         <div className="homeContainer">
-            <img className="logo" src="forge_logo.png" alt="logo" />
             <img className='homeImage' src='homeimage_with_logo.jpg' alt="forge-home" />
-            <button className="homeButtonLeft" onclick="/books">All Books</button>
-            <button className="homeButtonRight" onclick="/build">Build Book</button>
-            {/* {routing} */}
+            <Link to="/books" className="homeButtonLeft">Search Books</Link>
+            <Link to="/build" className="homeButtonRight">Build Book</Link>
+            {/* <div className="homeButtonLeft" Link to="/books">All Books</div>
+            <div className="homeButtonRight" Link to="/build">Build Book</div> */}
         </div>
     )
 }
